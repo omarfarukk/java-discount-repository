@@ -31,6 +31,10 @@ public enum User {
 		this.userRegistrationAgeinYrs = calculateCustomerRegistrationAge(registrationDate);
 	}
 
+	/**
+	 * isUserAllowedForDiscount Method is responsible to calculate if a user is allowed for discount based on category or based on registration date.
+	 * @return boolean, if the user is eligible for discount
+	 */
 	public boolean isUserAllowedForDiscount() {
 		boolean isAllowed = true;
 		if (this.equals(CUSTOMER) && this.userRegistrationAgeinYrs < 2)
@@ -44,12 +48,9 @@ public enum User {
 	}
 
 	/**
-	 * This Method is responsible to calculate the total amount applying the
-	 * relevant discount percentage depending on user category
-	 * 
-	 * @param billAmount
-	 *            , a double that represents the billAmount Generated.
-	 * @return double, discounted payble bill Amount
+	 * @getDiscount Method is responsible to calculate the relevant discount amount based on user category
+	 * @param billAmount , a double that represents the billAmount Generated.
+	 * @return double, discount Amount
 	 */
 	public double getDiscount(double billAmount) {
 		if (this.isUserAllowedForDiscount())

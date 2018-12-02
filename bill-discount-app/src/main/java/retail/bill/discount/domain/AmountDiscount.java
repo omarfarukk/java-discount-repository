@@ -1,5 +1,12 @@
 package retail.bill.discount.domain;
 
+/**
+ * @AmountDiscount class is responsible to store information of Amount based Discount.
+ * the unit amount and the discount amount per unit should be passed during object creation, else default unit 100 and discount amount per unit 5 will be considered.
+ * @getInstance methods should be used to create the AmountDiscount object
+ * 
+ **/
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,12 +52,9 @@ public class AmountDiscount {
 	}
 
 	/**
-	 * This Method is responsible to calculate the total amount applying the
-	 * relevant discount amount based on total Bill Amount
-	 * 
-	 * @param billAmount
-	 *            , a double that represents the billAmount Generated.
-	 * @return double, discounted payble bill Amount
+	 * @getDiscount Method is responsible to calculate the relevant discount amount based on initialized the unit amount and discount per unit,  default unit 100 and default unit 5 
+	 * @param billAmount , a double that represents the billAmount Generated.
+	 * @return double, discount Amount
 	 */
 	public double getDiscount(double billAmount) {
 		return calculateNumberofUnits(billAmount) * getDiscountAmountPerUnit();
