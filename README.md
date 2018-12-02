@@ -25,7 +25,7 @@ Maven - Bill Discount Framework - Java
 
 #4. build / execute the project
 ==========================================
-* Clone this project using git url https://github.com/omarfarukk/java-repository.git . 
+* Clone this project using git url https://github.com/omarfarukk/java-discount-repository.git 
   GIT CLI or GIT eclipse plugin could be used to clone the project.
 * go to the project root directory, For this project, it'll be bill-discount-app
 * build the project using below command
