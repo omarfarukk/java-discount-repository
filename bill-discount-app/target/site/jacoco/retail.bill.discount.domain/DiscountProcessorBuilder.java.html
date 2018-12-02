@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DiscountProcessorBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bill-discount-app</a> &gt; <a href="index.source.html" class="el_package">retail.bill.discount.domain</a> &gt; <span class="el_source">DiscountProcessorBuilder.java</span></div><h1>DiscountProcessorBuilder.java</h1><pre class="source lang-java linenums">package retail.bill.discount.domain;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import retail.bill.discount.exception.InvalidBillAmountException;
+
+public class DiscountProcessorBuilder {
+<span class="fc" id="L12">	public static final Logger logger = LoggerFactory.getLogger(DiscountProcessorBuilder.class);</span>
+	public static class DiscountProcessor {
+
+		private double billAmount;
+		private boolean isGrocerryItems;
+		private User user;
+<span class="fc" id="L18">		private AmountDiscount amountDiscount = AmountDiscount.getInstance();</span>
+
+<span class="fc" id="L20">		public DiscountProcessor(double billAmount, boolean isGrocerryItems) throws InvalidBillAmountException {</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">			if (billAmount &lt; 0)</span>
+<span class="fc" id="L22">				throw new InvalidBillAmountException(&quot;Bill amount can't be negetive&quot;);</span>
+
+<span class="fc" id="L24">			this.billAmount = billAmount;</span>
+<span class="fc" id="L25">			this.isGrocerryItems = isGrocerryItems;</span>
+<span class="fc" id="L26">			this.amountDiscount = AmountDiscount.getInstance();</span>
+<span class="fc" id="L27">		}</span>
+
+		public double applyDiscount(){
+<span class="fc" id="L30">			double discount = amountDiscount.getDiscount(billAmount);</span>
+<span class="fc bfc" id="L31" title="All 4 branches covered.">			if (!isGrocerryItems &amp;&amp; Objects.nonNull(user))</span>
+<span class="fc" id="L32">				discount += user.getDiscount(billAmount);</span>
+
+<span class="fc" id="L34">			return billAmount - discount;</span>
+
+		}
+
+	}
+
+	private static DiscountProcessor discountProcessor;
+
+<span class="fc" id="L42">	public DiscountProcessorBuilder(double billAmount, boolean isGrocerryItems) throws InvalidBillAmountException {</span>
+<span class="fc" id="L43">		setDiscountProcessor(new DiscountProcessor(billAmount, isGrocerryItems));</span>
+<span class="fc" id="L44">	}</span>
+
+	public static void setDiscountProcessor(DiscountProcessor discountProcessor) {
+<span class="fc" id="L47">		DiscountProcessorBuilder.discountProcessor = discountProcessor;</span>
+<span class="fc" id="L48">	}</span>
+
+
+	public DiscountProcessorBuilder withUser(User user) {
+<span class="fc" id="L52">		DiscountProcessorBuilder.discountProcessor.user = user;</span>
+<span class="fc" id="L53">		return this;</span>
+	}
+	
+	public DiscountProcessorBuilder withUserAndUserRegistrationDate(User user, LocalDate userRegistrationDate) {
+<span class="fc" id="L57">		DiscountProcessorBuilder.discountProcessor.user = user;</span>
+<span class="fc" id="L58">		DiscountProcessorBuilder.discountProcessor.user.setUserRegistrationAge(userRegistrationDate);</span>
+<span class="fc" id="L59">		return this;</span>
+	}
+
+	public DiscountProcessorBuilder withAmountDiscount(double unit, double discountAmountPerUnit) {
+<span class="fc" id="L63">		DiscountProcessorBuilder.discountProcessor.amountDiscount = AmountDiscount.getInstance(unit, discountAmountPerUnit);</span>
+<span class="fc" id="L64">		return this;</span>
+	}
+
+	public DiscountProcessor build() {
+<span class="fc" id="L68">		return DiscountProcessorBuilder.discountProcessor;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

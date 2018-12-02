@@ -1,0 +1,6 @@
+retail\bill\discount\domain\User.class
+retail\bill\discount\RetailBillDiscountMain.class
+retail\bill\discount\domain\DiscountProcessorBuilder.class
+retail\bill\discount\domain\AmountDiscount.class
+retail\bill\discount\exception\InvalidBillAmountException.class
+retail\bill\discount\domain\DiscountProcessorBuilder$DiscountProcessor.class

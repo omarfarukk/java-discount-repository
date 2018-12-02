@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bill-discount-app</a> &gt; <a href="index.source.html" class="el_package">retail.bill.discount.domain</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package retail.bill.discount.domain;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * This enum is responsible to store information of discount percentage
+ * depending on user category Also, it provides one
+ * method @getPaybaleAmountAfterApplyingDicount to calculate the bill amount
+ * after applying the discount
+ * 
+ **/
+<span class="fc" id="L16">public enum User {</span>
+<span class="fc" id="L17">	EMPLOYEE(30), AFFILIATE(10), CUSTOMER(5);</span>
+<span class="fc" id="L18">	public static final Logger logger = LoggerFactory.getLogger(User.class);</span>
+	private long discountPercenatge;
+	private long userRegistrationAgeinYrs;
+
+<span class="fc" id="L22">	User(long discountPercenatge) {</span>
+<span class="fc" id="L23">		this.discountPercenatge = discountPercenatge;</span>
+<span class="fc" id="L24">	}</span>
+
+	public long getDiscountPercenatge() {
+<span class="fc" id="L27">		return this.discountPercenatge;</span>
+	}
+
+	void setUserRegistrationAge(LocalDate registrationDate) {
+<span class="fc" id="L31">		this.userRegistrationAgeinYrs = calculateCustomerRegistrationAge(registrationDate);</span>
+<span class="fc" id="L32">	}</span>
+
+	public boolean isUserAllowedForDiscount() {
+<span class="fc" id="L35">		boolean isAllowed = true;</span>
+<span class="fc bfc" id="L36" title="All 4 branches covered.">		if (this.equals(CUSTOMER) &amp;&amp; this.userRegistrationAgeinYrs &lt; 2)</span>
+<span class="fc" id="L37">			isAllowed = false;</span>
+<span class="fc" id="L38">		return isAllowed;</span>
+	}
+
+	private long calculateCustomerRegistrationAge(LocalDate registrationDate) {
+<span class="fc" id="L42">		LocalDate currentDate = LocalDate.now();</span>
+<span class="fc" id="L43">		return ChronoUnit.YEARS.between(registrationDate, currentDate);</span>
+	}
+
+	/**
+	 * This Method is responsible to calculate the total amount applying the
+	 * relevant discount percentage depending on user category
+	 * 
+	 * @param billAmount
+	 *            , a double that represents the billAmount Generated.
+	 * @return double, discounted payble bill Amount
+	 */
+	public double getDiscount(double billAmount) {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">		if (this.isUserAllowedForDiscount())</span>
+<span class="fc" id="L56">			return billAmount * ((double) this.getDiscountPercenatge() / 100);</span>
+		else
+<span class="fc" id="L58">			return 0;</span>
+
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

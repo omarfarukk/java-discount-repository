@@ -1,0 +1,5 @@
+retail\bill\discount\domain\UserTest.class
+retail\bill\discount\domain\DiscountProcessorBuilderTest.class
+retail\bill\discount\domain\AmountDiscountTest.class
+retail\bill\discount\exception\InvalidBillAmountExceptionTest.class
+retail\bill\discount\RetailBillDiscountMainTest.class
