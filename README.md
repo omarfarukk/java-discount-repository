@@ -15,12 +15,12 @@ Maven - Bill Discount Framework - Java
 * spotbugs-maven-plugin 3.1.8
 * maven-pmd-plugin 3.11.0
 * jacoco-maven-plugin
-* Open Source Sonar scanner for Maven
+* Sonar scanner for Maven
 
 #3. PreRequisites for the project to build and run
 ======================================================
-* JDK 1.8 to be installed  in the system and JAVA_HOME is set properly.
-* Sonar Qube Server 7.4 to be installed in the system and make it up and running with default sonar port 9000.
+* JDK 1.8 to be installed  in the system and JAVA_HOME to be set properly.
+* Sonar Qube Server 7.4 to be installed in the system and make it up and running with default port 9000.
 * Maven 3.5.0 to be Installed in the system and M2_HOME is set properly.
 * Spring Tool SUite / Eclipse Latest version installed with "The ObjectAid UML Explorer for Eclipse" Plugin
 
