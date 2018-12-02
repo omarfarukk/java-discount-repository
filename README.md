@@ -10,7 +10,7 @@ Maven - Bill Discount Framework - Java
 * Sonar Qube Server 7.4 for continuous Code quality inspection
 * Spring Tool Suite IDE 3.9.2.RELEASE for project development
 
-#2. Maven Plugins Used for Static Code Analysis
+#2. Maven Plugins Used for Code Analysis, Code Quality and Code Coverage
 ===============================================
 * spotbugs-maven-plugin 3.1.8
 * maven-pmd-plugin 3.11.0
