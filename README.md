@@ -46,7 +46,7 @@ Reports could be found in {Project_Base_Directory}/target/site/jacoco/index.html
 
     mvn clean install site
     
-#5. Maven Plugins Used for Static Code Analysis
+#5. SONAR QUBE Integration
 ===============================================
 * build the project using below command from the project root directory
 
