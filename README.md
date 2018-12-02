@@ -23,8 +23,8 @@ Maven - Bill Discount Framework - Java
 * Sonar Qube Server 7.4 to be installed in the system and make it up and running with default sonar port 9000.
 * Maven 3.5.0 to be Installed in the system
 
-#4. build / execute the project
-==========================================
+#4. build / execute the project, Generate static Code Analysis and Code Coverage
+=================================================================================
 * Clone this project using git url https://github.com/omarfarukk/java-discount-repository.git 
   GIT CLI or GIT eclipse plugin could be used to clone the project.
 * go to the project root directory, For this project, it'll be bill-discount-app
@@ -46,8 +46,16 @@ Reports could be found in {Project_Base_Directory}/target/site/jacoco/index.html
 
     mvn clean install site
     
-* Find the code quality, code analysis or code coverage inside locally installed SONAR QUBE running on port 9000.
+#5. Maven Plugins Used for Static Code Analysis
+===============================================
+* build the project using below command from the project root directory
+
+    mvn clean install
+    
+* Find the code quality, code analysis or code coverage inside locally installed SONAR QUBE running on port 9000 using below command.
 
     mvn sonar:sonar -Dsonar.host.url=http://localhost:9000
     
-    You might change the sonar URL dynamically in the above command. By Default mvn sonar:sonar will pick up the local server runnning on port 9000
+    You might change the sonar URL dynamically in the above command. 
+    By Default mvn sonar:sonar will pick up the local server runnning on port 9000.
+    After Executing mvn sonar:sonar , reach the "http://localhost:9000" project dashboard area to see the project summary.
