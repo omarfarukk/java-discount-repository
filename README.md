@@ -22,6 +22,7 @@ Maven - Bill Discount Framework - Java
 * JDK 1.8 to be installed  in the system
 * Sonar Qube Server 7.4 to be installed in the system and make it up and running with default sonar port 9000.
 * Maven 3.5.0 to be Installed in the system
+* Spring Tool SUite / Eclipse Latest version installed with "The ObjectAid UML Explorer for Eclipse" Plugin
 
 #4. build / execute the project, Generate static Code Analysis and Code Coverage
 =================================================================================
@@ -59,3 +60,8 @@ Reports could be found in {Project_Base_Directory}/target/site/jacoco/index.html
     You might change the sonar URL dynamically in the above command. 
     By Default mvn sonar:sonar will pick up the local server runnning on port 9000.
     After Executing mvn sonar:sonar , reach the "http://localhost:9000" project dashboard area to see the project summary.
+
+#6. UML Class Diagram for the Project
+=====================================
+* GO to the Project Root Location, in this case it is "bill-discount-app"
+* Find UML Diagram in "model.ucls" file . You might view this file using "The ObjectAid UML Explorer for Eclipse Plugin"
