@@ -1,7 +1,7 @@
 Maven - Bill Discount Framework - Java
 ======================================
 
-#1. Technologies / Frameworks /Tools used
+**1. Technologies / Frameworks /Tools used
 ==========================================
 * Maven 3.5.0 for building the Project, generating the static code analysis, executing test cases, generating code coverage,    connecting to Sonar Qube for continuous code quality inspection.
 * Log4j with SL4J -sl4j-log12-1.7.25 to achieve Logging.
